@@ -79,6 +79,7 @@
 2. Launch Stacer using the installed `stacer` command.
 
 ## Build from source with CMake (Qt Version Qt 5.x)
+0. `sudo apt install qtbase5-dev libqt5charts5-dev libqt5svg5-dev qttools5-dev-tools qttools5-dev`
 1. `mkdir build && cd build`
 2. `cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/qt/path/bin ..`
 3. `make -j $(nproc)`
