@@ -2,5 +2,5 @@ Stacer.pro.*
 dist/
 build/
 #*.AppImage
-.vscode
+#.vscode
 Release/
