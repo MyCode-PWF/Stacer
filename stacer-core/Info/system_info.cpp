@@ -10,19 +10,20 @@ SystemInfo::SystemInfo()
     QString speed = nullptr;
 
     try{
-        QStringList lines = CommandUtil::exec("bash",{"-c", LSCPU_COMMAND}).split('\n');  //run command in English language (guaratee same behaviour across languages)
+        QStringList lines = CommandUtil::exec("bash",{"-c", "'cat ", PROC_CPUINFO, "'"}).split('\n');  //run command in English language (guaratee same behaviour across languages)
 
         QRegExp regexp("\\s+");
         QString space(" ");
 
-        auto filterModel = lines.filter(QRegExp("^Model name"));
+        auto filterModel = lines.filter(QRegExp("^[Mm]odel name"));
         QString modelLine = filterModel.isEmpty() ? "error missing model:error missing model" : filterModel.first();
-        auto filterSpeed = lines.filter(QRegExp("^CPU max MHz"));
+        lines = CommandUtil::exec("bash",{"-c", LSCPU_COMMAND_MAXMHZ}).split('\n');
+        auto filterSpeed = lines.filter(QRegExp("[0-9]"));
         QString speedLine = "error:0.0";
         if (filterSpeed.isEmpty())
         {
             // fallback to CPU MHz
-            filterSpeed = lines.filter(QRegExp("^CPU MHz"));
+            filterSpeed = CommandUtil::exec("bash",{"-c", LSCPU_COMMAND_MHZ}).split('\n');
             speedLine = filterSpeed.isEmpty() ? speedLine : filterSpeed.first();
         }
 

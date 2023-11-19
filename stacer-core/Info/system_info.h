@@ -6,7 +6,9 @@
 #include "Utils/command_util.h"
 #include "Info/cpu_info.h"
 
-#define LSCPU_COMMAND "LANG=nl_NL.UTF-8 lscpu"
+#define LSCPU_COMMAND_MHZ "'LANGUAGE=en_US.UTF-8 lscpu -e=MHZ'"
+#define LSCPU_COMMAND_MAXMHZ "'LANGUAGE=en_US.UTF-8 lscpu -e=MAXMHZ'"
+#define PROC_CPUINFO "/proc/cpuinfo"
 
 #include "stacer-core_global.h"
 
