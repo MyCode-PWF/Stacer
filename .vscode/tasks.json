@@ -1,0 +1,10 @@
+{
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "rm -rf build || echo 'no build folder' && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=/qt/path/bin .. && make ; cd .."
+        }
+    ],
+    "version": "2.0.0"
+}
